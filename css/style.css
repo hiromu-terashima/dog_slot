@@ -1,0 +1,178 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.title_img img {
+    width: 100%;
+    max-width: 100vw;
+    /* ビューポートの幅に合わせる */
+    height: auto;
+    /* アスペクト比を維持 */
+    display: block;
+    /* 画像の下の余白を除去 */
+}
+
+main {
+    display: flex;
+    /* 要素をフレックスに指定 */
+    flex-direction: column;
+    /* フレックスを縦に配置 */
+    align-items: center;
+    /* フレックスの中を垂直に中央に配置 */
+    background-color: #d1dbe6;
+    height: 500px;
+}
+
+button {
+    background-color: #f3ad5d;
+    color: white;
+    border: none;
+    height: 60px;
+    width: 60px;
+    margin: 30px;
+    font-size: 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    /* テキストを水平に中央に配置 */
+    line-height: 60px;
+    /* ボタンの高さと同じにすると、中央にテキストが来る */
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.slot {
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    background-color: #f6f6f6;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 5px solid #81a7f9;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.slot_value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* フレックスの中を水平に中央に配置 */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+#result_str {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* フレックスの中を水平に中央に配置 */
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+#result_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* フレックスの中を水平に中央に配置 */
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    /* 必要に応じて溢れる部分を隠す */
+}
+
+#result_img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* 画像のアスペクト比を維持しながら収まる */
+}
+
+footer {
+    display: flex;
+    background-color: #64717f;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#reset,
+#help,
+#score,
+#slot {
+    background-color: #272727;
+    color: white;
+    border: none;
+    height: 60px;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin: 10px;
+}
+
+
+#title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+#score_view {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* 各カテゴリのスタイル */
+.result-category {
+    margin-bottom: 20px;
+}
+
+/* 各カテゴリの見出し */
+.result-category h3 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/* 画像を横に並べるためのコンテナ */
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    /* 画像の間隔 */
+}
+
+/* 画像のスタイル */
+.image-container img {
+    max-width: 110px;
+    /* 必要に応じてサイズ調整 */
+    height: auto;
+    border: 3px solid #ffffff;
+}
+
+#score_1 {
+    max-width: 165px;
+    /* 必要に応じてサイズ調整 */
+    height: auto;
+    border: 5px solid #fff692;
+}
