@@ -1,7 +1,7 @@
 const SLOT_ARRAY = ['ポメ', 'ラニ', 'アン'] //スロットの中身を格納する定数配列
 let slot_cnt = 0 //スロットの回数
 let slot_result_array = [] //獲得したスロットの値を格納する配列
-let clear_chk_array = []　//全てのパターンを網羅したか確認するための配列
+let complete_chk_array = []　//全てのパターンを網羅したか確認するための配列
 
 //1～3のランダム値を獲得し、引数の位置に結果を格納する
 function stop_slot(slot_num) {
@@ -12,18 +12,18 @@ function stop_slot(slot_num) {
 }
 
 //スロットの結果を表示
-function slot_limit_chk() {
+function chk_slot_limit() {
     //スロットをすべて回していた場合実行
     if (slot_cnt === 3) {
         //ポメラニアンが完成している場合
         if (JSON.stringify(SLOT_ARRAY) === JSON.stringify(slot_result_array)) {
-            result = ('ポメラニアン!!!!!')
+            result_str = ('ポメラニアン!!!!!')
             result_img_path = 'img/ポメラニアン成功.jpg'
             score_num = 1
 
             //同じ単語が揃っている場合(例:ポメ,ポメ,ポメ)
         } else if (slot_result_array[0] === slot_result_array[1] && slot_result_array[0] === slot_result_array[2]) {
-            result = ('ポメラニアン？')
+            result_str = ('ポメラニアン？')
             //ランダムで失敗画像,パターン番号を格納
             false_num = Math.floor(Math.random() * (2 + 1))
             if (false_num === 0) {
@@ -39,7 +39,7 @@ function slot_limit_chk() {
 
             //上記のどれにも当てはまらない場合
         } else {
-            result = ('ポメラニアン失敗')
+            result_str = ('ポメラニアン失敗')
             //ランダムで失敗画像,パターン番号を格納
             false_num = Math.floor(Math.random() * (2 + 1))
             if (false_num === 0) {
@@ -61,13 +61,13 @@ function slot_limit_chk() {
 }
 
 //スロットの値をそれぞれ表示
-function slot_view(div_nm, i) {
-    document.getElementById(div_nm).innerHTML = slot_result_array[i]
+function view_slot(div_num, i) {
+    document.getElementById(div_num).innerHTML = slot_result_array[i]
 }
 
 //スロットの結果を表示
 function view_result() {
-    document.getElementById("result_str").innerHTML = result
+    document.getElementById("result_str").innerHTML = result_str
     document.getElementById("result_img").innerHTML = '<img src="' + result_img_path + '" ></img>;'
 }
 
@@ -75,9 +75,9 @@ function view_result() {
 function update_score() {
     document.getElementById("score_" + score_num).setAttribute('src', result_img_path)
     //配列に結果を格納する
-    clear_chk_array[score_num] = score_num
+    complete_chk_array[score_num] = score_num
     //7パターンすべての結果が格納されている場合、コンプリートと表示する。
-    if (clear_chk_array.filter(item => item !== undefined).length === 7) {
+    if (complete_chk_array.filter(item => item !== undefined).length === 7) {
         document.getElementById('title').textContent = "コンプリート！！！";
     }
 
@@ -101,22 +101,22 @@ function reset() {
 //PUSH1ボタン
 document.getElementById('PUSH1').addEventListener('click', () => {
     stop_slot(0)
-    slot_view("1st", 0)
-    slot_limit_chk()
+    view_slot("1st", 0)
+    chk_slot_limit()
 });
 
 //PUSH2ボタン
 document.getElementById('PUSH2').addEventListener('click', () => {
     stop_slot(1)
-    slot_view("2nd", 1)
-    slot_limit_chk()
+    view_slot("2nd", 1)
+    chk_slot_limit()
 });
 
 //PUSH3ボタン
 document.getElementById('PUSH3').addEventListener('click', () => {
     stop_slot(2)
-    slot_view("3rd", 2)
-    slot_limit_chk()
+    view_slot("3rd", 2)
+    chk_slot_limit()
 });
 
 //リセットボタン
